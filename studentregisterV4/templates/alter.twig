@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rediger Student</title>
+    <link href="stylsheet.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="wrap">
+    <h1 class="centered_text">Studentregister</h1>
+    <h3 class="centered_text">Rediger student</h3>
+    <form method="post" class="centered_div centered_text" style="display: table;">
+        <table class="bordered_table">
+            <tr>
+                <td><label>Etternavn:</label></td>
+                <td><input type="text" name="etternavn" value="{{ student.hentEtterNavn() }}"/></td>
+            </tr>
+            <tr>
+                <td><label>Fornavn:</label></td>
+                <td><input type="text" name="fornavn" value="{{ student.hentForNavn() }}"/></td>
+            </tr>
+            <tr>
+                <td>Klasse</td>
+                <td>
+                    <select name="klasse">
+                        {% for klasse in klasser %}
+                            {% if klasse.hentId() == student.hentKlasse() %}
+                                 <option value="{{ klasse.hentId() }}" selected>{{ klasse.hentNavn() }}</option>
+                            {% else %}
+                                <option value="{{ klasse.hentId() }}">{{ klasse.hentNavn() }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Mobil:</label></td>
+                <td><input type="text" name="mobil" value="{{ student.hentMobil() }}"/></td>
+            </tr>
+            <tr>
+                <td><label>Webside:</label></td>
+                <td><input type="text" name="www" value="{{ student.hentURL() }}"/></td>
+            </tr>
+            <tr>
+                <td><label>Epost:</label></td>
+                <td><input type="text" name="epost" value="{{ student.hentEpost() }}"/></td>
+            </tr>
+            <tr>
+                <input type="hidden" name="id" value="{{ student.hentId() }}">
+                <td colspan="2"><input type="submit" name="alter" value="Submit"></td>
+            </tr>
+        </table>
+    </form>
+    {% if success %}
+    <div class="centered_div centered_text">
+        <h4>Student endret</h4>
+        <a href="StudentRegister.php">Tilbake</a>
+    </div>
+    {% endif %}
+
+
+</div>
+</body>
+</html>

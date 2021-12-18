@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="5d9bf4ab-80fb-42d4-abe3-b9adbe751ec4" name="Apache XAMPP" url="http://localhost/studentregister-twig">
+        <fileTransfer port="0" mountedRoot="C:\xampp\htdocs\studentregister-twig" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>

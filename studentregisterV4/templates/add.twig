@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Legg til student</title>
+    <link href="stylsheet.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="wrap">
+    <h1 class="centered_text">Studentregister</h1>
+    <h3 class="centered_text">Legg til student</h3>
+    <form method="post" class="centered_div centered_text" style="display: table;">
+        <table class="bordered_table">
+            <tr>
+                <td><label>Etternavn:</label></td>
+                <td><input type="text" name="etternavn" value="{{ student.hentEtterNavn() }}"/></td>
+            </tr>
+            <tr>
+                <td><label>Fornavn:</label></td>
+                <td><input type="text" name="fornavn" value="{{ student.hentForNavn() }}"/></td>
+            </tr>
+            <tr>
+                <td>Klasse</td>
+                <td>
+                    <select name="klasse">
+                        <option selected hidden value="error">Velg Klasse</option>
+                        {% for klasse in klasser %}
+                            <option value="{{ klasse.hentId() }}">{{ klasse.hentNavn() }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Mobil:</label></td>
+                <td><input type="text" name="mobil" value="{{ student.hentMobil() }}"/></td>
+            </tr>
+            <tr>
+                <td><label>Webside:</label></td>
+                <td><input type="text" name="www" value="{{ student.hentURL() }}"/></td>
+            </tr>
+            <tr>
+                <td><label>Epost:</label></td>
+                <td><input type="text" name="epost" value="{{ student.hentEpost() }}"/></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" name="add" value="Submit"></td>
+            </tr>
+        </table>
+    </form>
+    {% if success %}
+        <div class="centered_div centered_text">
+            <h4>Student lagt til</h4>
+            <a href="StudentRegister.php">Tilbake</a>
+        </div>
+    {% endif %}
+
+</div>
+</body>
+</html>

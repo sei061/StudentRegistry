@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Studentregister</title>
+    <link href="stylsheet.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="wrap">
+<h1 class="centered_text">Studentregister</h1>
+    {% if student %}
+        <table class="centered_div bordered_table">
+            <tr>
+                <td colspan="2">Informasjon om student</td>
+            </tr>
+            <tr>
+                <td>Navn</td>
+                <td>{{ student.hentNavn() }}</td>
+            </tr>
+            <tr>
+                <td>Klasse</td>
+                <td>{{ student.hentKlasseNavn() }}</td>
+            </tr>
+            <tr>
+                <td>Mobil</td>
+                <td>{{ student.hentMobil() }}</td>
+            </tr>
+            <tr>
+                <td>Webside</td>
+                <td>{{ student.hentURL() }}</td>
+            </tr>
+            <tr>
+                <td>Epost</td>
+                <td>{{ student.hentEpost() }}</td>
+            </tr>
+            <tr>
+                <td colspan="2"><a href="StudentRegister.php" class="centered_text" >Tilbake</a></td>
+            </tr>
+        </table>
+
+    {% else %}
+        <table class="centered_div bordered_table">
+            <tr>
+                <td colspan="2">Studenter</td>
+            </tr>
+            {% for student in studenter %}
+                <tr>
+                    <td style="width:300px"><a href="?id={{ student.hentID }}">{{ student.hentEtterNavn() }}, {{ student.hentForNavn() }}</a></td>
+                    <td><a href="?id={{ student.hentID }}&alter=true">Rediger</a></td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="2"><a href="?add=true">Legg til student</a></td>
+            </tr>
+        </table>
+    {% endif %}
+</div>
+</body>
+</html>
